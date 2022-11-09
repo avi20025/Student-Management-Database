@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class Student {
 	private String firstName;
 	private String lastName;
@@ -10,12 +8,13 @@ public class Student {
 	private String netID;
 	private String courses = "";
 	private double tuitionbalance = 0;
+	private double originalBalance = 0;
 	private int creditHours;
-	private static int costOfCourse = 600;
+	private static int costPerCreditHour = 140;
+	private int fees = 75;
 	private static int id = 2000;
 	
-	
-	//constructor: prompt user to enter sudent's name and year
+	// Prompt messages to student to input their information and credit hours that plan to take
 	public Student() {
 		
 		Scanner input = new Scanner(System.in);
@@ -28,37 +27,31 @@ public class Student {
 		System.out.println("1 - Freshmen\n2- Sophomore\n3- Junior\n4 Senior\nEnter student class level: ");
 		this.gradeYear = input.nextInt();
 
+		System.out.println("Enter the number of credit hours you intent to take");
+		this.creditHours = input.nextInt();
+
 		setStudentNetID();
 	}
 	
 	
-	// Generate an id 
-	
+	// Generating a random netID for student 
 	private void setStudentNetID() 
 	{
-		//grade level  + ID
 		id++;
-		this.netID =  gradeYear + ""+id;
+		this.netID =  gradeYear + "" + id;
 	}
 
-	private void setCreditHours()
+	// Calculates total tuition cost based on credit hours
+	private double getTuitionRate()
 	{
-		Character creditNum = courses.charAt(1);
-
-		if(creditNum.equals("1"))
-			creditHours = 1;
-		else if(creditNum.equals("2"))
-			creditHours = 2;
-		else if(creditNum.equals("3"))
-			creditHours = 3;
-		else if(creditNum.equals("4"))
-			creditHours = 4;
-
+		double totalCost = 0;
+		totalCost = creditHours * costPerCreditHour;
+		totalCost = totalCost + fees;
+		return totalCost;
 	}
 	
-	//enroll in courses
+	// enrolls student in a course and tabulates tuition cost
 	public void enroll() {
-	 	//get inside a loop, user hits 0	
 	  	do 
 		{
 	 			System.out.print("Enter course to enroll (Q to quit): ");
@@ -67,7 +60,7 @@ public class Student {
 	 			if(!course.equals("Q")) 
 				{
 	 				courses = courses + "\n  " + course;
-	 				tuitionbalance = tuitionbalance + costOfCourse;
+	 				tuitionbalance = tuitionbalance + getTuitionRate();
 	 			}
 	 			else 
 				{
@@ -77,15 +70,22 @@ public class Student {
 	 	}
 	 
 	
-	//view balance
+	// Keeps track of students' balance in account
 	public void viewBalance() 
 	{
-	 	System.out.println("Your Balance is: $"+ tuitionbalance);
+	 	System.out.println("Your Balance is: $" + tuitionbalance);
 	}
-		
-		
+
+	public double payment()
+	{
+		Scanner input = new Scanner(System.in);
+	 	double payment = input.nextDouble();
+		tuitionbalance -= payment;
+
+		return payment;
+	}
 	
-	//pay tuition
+	// Processes payment from student
 	public void payTuition() 
 	{
 		viewBalance();
@@ -97,14 +97,18 @@ public class Student {
 	 	viewBalance();
 	}
 	
-	//show status
+	// Displays complete status of students' account
 	public String toString() 
 	{
 	 	return "Name: " + firstName + " " + lastName +
-			   "\nStudent Status: " + gradeYear +
+			   "\nStudent Year: " + gradeYear +
 			   "\nStudent netID: " + netID +
 	 		   "\nCourses Enrolled: " + courses +
 	 		   "\nBalance: $" + tuitionbalance; 
 	}
-	
+
+	public String databaseRepresentation()
+	{
+		return lastName + "," + firstName + "," + netID + "," + creditHours + "," + tuitionbalance;
+	}
 }
