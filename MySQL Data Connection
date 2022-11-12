@@ -3,10 +3,9 @@ Command line code for transferring data to MySQL database:
 
 boo@boos-Air-2 ~ % alias mysql=/usr/local/mysql/bin/mysql
 boo@boos-Air-2 ~ % mysql --local-infile=1 -u root -p
-
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 18
+Your MySQL connection id is 22
 Server version: 8.0.31 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2022, Oracle and/or its affiliates.
@@ -22,16 +21,16 @@ Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
-mysql> load data local infile '/Users/boo/Desktop/CS Projects/Student Database System/output.txt' into table studentInfos;
-Query OK, 3 rows affected (0.00 sec)
+mysql> load data local infile '/Users/boo/Desktop/CS Projects/Student Database System/output.txt' into table students;
+Query OK, 3 rows affected (0.06 sec)
 Records: 3  Deleted: 0  Skipped: 0  Warnings: 0
 
-mysql> select * from studentInfos;
-+----------+-----------+-------+-----------+------------+
-| lastName | firstName | netID | credHours | balanceDue |
-+----------+-----------+-------+-----------+------------+
-| Vadivelu | Avinash   | 22001 |         9 |        505 |
-| Daniel   | Jack      | 22002 |        12 |        120 |
-| Brady    | Tom       | 32003 |         9 |          0 |
-+----------+-----------+-------+-----------+------------+
+mysql> select * from students;
++----------+-----------+-------------+-------+-----------+------------+
+| lastName | firstName | collegeYear | netID | credHours | balanceDue |
++----------+-----------+-------------+-------+-----------+------------+
+| Vadivelu | Avinash   | 2           | 22001 |         9 |        505 |
+| Daniel   | Jack      | 2           | 22002 |        12 |        120 |
+| Brady    | Tom       | 3           | 32003 |         9 |          0 |
++----------+-----------+-------------+-------+-----------+------------+
 3 rows in set (0.00 sec)
