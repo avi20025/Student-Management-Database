@@ -109,6 +109,6 @@ public class Student {
 
 	public String databaseRepresentation()
 	{
-		return lastName + "," + firstName + "," + netID + "," + creditHours + "," + tuitionbalance;
+		return lastName + "\t" + firstName + "\t" + gradeYear + "\t" + netID + "\t" + creditHours + "\t" + tuitionbalance;
 	}
 }
