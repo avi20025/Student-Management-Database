@@ -2,5 +2,5 @@ Information to be transfered to MySQL database
 
 
 Vadivelu	Avinash	2	22001	9	505.0
-Daniel	Jack	2	22002	12	120.0
+Black	Jack	2	22002	12	120.0
 Brady	Tom	3	32003	9	0.0
