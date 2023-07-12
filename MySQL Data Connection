@@ -30,7 +30,7 @@ mysql> select * from students;
 | lastName | firstName | collegeYear | netID | credHours | balanceDue |
 +----------+-----------+-------------+-------+-----------+------------+
 | Vadivelu | Avinash   | 2           | 22001 |         9 |        505 |
-| Daniel   | Jack      | 2           | 22002 |        12 |        120 |
+| Black    | Jack      | 2           | 22002 |        12 |        120 |
 | Brady    | Tom       | 3           | 32003 |         9 |          0 |
 +----------+-----------+-------------+-------+-----------+------------+
 3 rows in set (0.00 sec)
